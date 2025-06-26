@@ -7,13 +7,6 @@ x-common-service: &common
     - "22"
 
 services:
-  base:
-    build:
-      context: ./docker/base
-      tags:
-        - "csc466:base"
-    image: csc466:base
-  
   head-instructor:
     build:
       context: ./docker/head-instructor
