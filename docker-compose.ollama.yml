@@ -1,0 +1,26 @@
+x-common-service: &common
+  container_name: ollama
+  image: ollama/ollama
+  volumes: # change this to your own external model storage place/platform
+    # - //e/data/ollama_models:/root/.ollama # This is for Windows
+    - /Users/lngo/workspace/ollama_models:/root/.ollama # This is for Mac
+  ports:
+    - "11434:11434"
+  environment:
+    OLLAMA_RUN_TIMEOUT: 600
+    OLLAMA_REQUEST_TIMEOUT: 600
+    OLLAMA_LOAD_TIMEOUT: 600
+    
+services:
+  ollama:
+    <<: *common
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: ["gpu"]
+              count: all
+  # Launch this if there is no GPU or if you are running on Mac
+  ollama-cpu:
+    <<: *common
