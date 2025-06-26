@@ -9,7 +9,7 @@ x-common-service: &common
 services:
   head-instructor:
     build:
-      context: ./docker/head-instructor
+      context: ./docker/csc466/head-instructor
       tags:
         - "csc466:head-instructor"
     <<: *common
@@ -30,7 +30,7 @@ services:
 
   head-student:
     build:
-      context: ./docker/head-student
+      context: ./docker/csc466/head-student
       tags:
         - "csc466:head-student"
     image: csc466:head-student
