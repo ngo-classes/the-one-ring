@@ -1,0 +1,99 @@
+services:
+  base:
+    build:
+      context: ./docker/base
+      tags:
+        - "csc466:base"
+    image: csc466:base
+  
+  head-instructor:
+    build:
+      context: ./docker/head-instructor
+      tags:
+        - "csc466:head-instructor"
+    init: true
+    image: csc466:head-instructor
+    ports:
+      - "18088:8088"
+      - "18000:8000"
+      - "2222:22"
+    volumes:
+      - ../courses:/lectures # courses is a github repo containing lecture materials
+      - home:/home
+      - ../grading-scripts:/grading-scripts
+      - ../d2l:/d2l
+    expose:
+      - "22"
+    hostname: head
+    container_name: head
+    networks:
+      - compute
+    deploy:
+      resources:
+        limits:
+          cpus: 4.0
+
+  head-student:
+    build:
+      context: ./docker/head-student
+      tags:
+        - "csc466:head-student"
+    init: true
+    image: csc466:head-student
+    ports:
+      - "18088:8088"
+      - "18000:8000"
+      - "2222:22"
+    volumes:
+      - home:/home
+    expose:
+      - "22"
+    hostname: head
+    container_name: head
+    networks:
+      - compute
+    deploy:
+      resources:
+        limits:
+          cpus: 4.0
+
+  compute01:
+    init: true
+    image: csc466:base
+    volumes:
+      - ../courses:/lectures # courses is a github repo containing lecture materials
+      - home:/home
+    expose:
+      - "22"
+    hostname: compute01
+    container_name: compute01
+    networks:
+      - compute
+    deploy:
+      resources:
+        limits:
+          cpus: 2.0
+
+  compute02:
+    init: true
+    image: csc466:base
+    volumes:
+      - ../courses:/lectures # courses is a github repo containing lecture materials
+      - home:/home
+    expose:
+      - "22"
+    hostname: compute02
+    container_name: compute02
+    networks:
+      - compute
+    deploy:
+      resources:
+        limits:
+          cpus: 2.0
+
+networks:
+  compute:
+    name: compute
+
+volumes:
+  home:
