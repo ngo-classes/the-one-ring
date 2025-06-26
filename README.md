@@ -1,8 +1,7 @@
-# CSC466 Cluster
+# The One Ring framework
 
-A template to support development of containerization learning materials
-
-## Notes:
+This is the aggregarion of all other research and education containerized environments. Using multiple Docker compose files, this framework aims to 
+provide users with a dynamic setup that can be quickly extended based on their own teach/learning/researching progress. 
 
 ### Warning
 
@@ -10,7 +9,7 @@ A template to support development of containerization learning materials
 
 ~~~
 git config --global core.autocrlf false
-git clone https://github.com/class-master/csc466env
+git clone https://github.com/ngo-classes/the-one-ring
 ~~~
 
 ### Building the images
