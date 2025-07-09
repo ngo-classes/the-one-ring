@@ -12,6 +12,28 @@ x-common-service: &common
     OLLAMA_LOAD_TIMEOUT: 600
     
 services:
+  base:
+    build:
+      context: ./docker/llm_platform/base
+      tags:
+        - "llm_platform:base"
+    image: llm_platform:base
+    
+  jupyter_llm:
+    build:
+      context: ./docker/llm_platform/jupyter
+      tags:
+        - "llm_platform:latest"
+    init: true
+    image: llm_platform:latest
+    ports:
+      - "18888:8888" # jupyter
+    volumes:
+      - /users/lngo/workspace:/workspace
+    expose:
+      - "8888"
+    hostname: jupyter_llm 
+    container_name: jupyter_llm
   ollama:
     <<: *common
     deploy:

@@ -26,8 +26,6 @@ services:
       - "22"
     hostname: head
     container_name: head
-    networks:
-      - compute
     deploy:
       resources:
         limits:
@@ -50,8 +48,6 @@ services:
       - "22"
     hostname: head
     container_name: head
-    networks:
-      - compute
     deploy:
       resources:
         limits:
@@ -67,8 +63,6 @@ services:
       - "22"
     hostname: compute01
     container_name: compute01
-    networks:
-      - compute
     deploy:
       resources:
         limits:
@@ -84,16 +78,10 @@ services:
       - "22"
     hostname: compute02
     container_name: compute02
-    networks:
-      - compute
     deploy:
       resources:
         limits:
           cpus: 2.0
-
-networks:
-  compute:
-    name: compute
 
 volumes:
   home:

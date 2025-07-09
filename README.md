@@ -60,4 +60,4 @@ After this is done, update `.gitignore` so that temporary files generated in hom
 
 ### Build mkdocs server (for instructor)
 
-`mkdocs serve --dev-addr=0.0.0.0:8000` to support external view of mkdocs
+`mkdocs serve --dirty --dev-addr=0.0.0.0:8000` to support external view of mkdocs
