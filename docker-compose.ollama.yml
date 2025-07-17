@@ -29,7 +29,7 @@ services:
     ports:
       - "18888:8888" # jupyter
     volumes:
-      - /users/lngo/workspace:/workspace
+      - /Users/lngo/workspace:/workspace
     expose:
       - "8888"
     hostname: jupyter_llm 
