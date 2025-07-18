@@ -1,4 +1,10 @@
 services:
+  csc331base:
+    build:
+      context: ./docker/csc331/base
+      tags:
+        - "csc331:base"
+    image: csc331:base
   csc466base:
     build:
       context: ./docker/csc466/base

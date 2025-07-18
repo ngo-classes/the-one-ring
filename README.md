@@ -15,9 +15,10 @@ git clone https://github.com/ngo-classes/the-one-ring
 ### Building the images
 
 - You should build the images in the following order:
+- Build the specific bases depending on your courses need:
 
 ~~~
-docker compose build base --no-cache
+docker compose -f docker-compose.bases.yml build csc331base --no-cache
 ~~~
 
 - If you are an instructor with lecture nodes and grading, build `head-instructor`:
