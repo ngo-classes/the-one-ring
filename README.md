@@ -12,14 +12,24 @@ git config --global core.autocrlf false
 git clone https://github.com/ngo-classes/the-one-ring
 ~~~
 
-### Building the images
+### Building the base images
 
 - You should build the images in the following order:
 - Build the specific bases depending on your courses need:
 
+- CSC331
+
 ~~~
 docker compose -f docker-compose.bases.yml build csc331base --no-cache
 ~~~
+
+- CSC467
+
+~~~
+docker compose -f docker-compose.bases.yml build csc467base --no-cache
+~~~
+
+### CSC331: Operating System
 
 - If you are an instructor with lecture nodes and grading, build `head-instructor`:
 
@@ -32,6 +42,29 @@ docker compose build --no-cache master-instructor
 ~~~
 docker compose build --no-cache head-student
 ~~~
+
+### CSC467: Big Data Engineering
+
+- If you are an instructor with lecture nodes and grading, build `master-instructor`:
+
+~~~
+docker compose -f docker-compose.csc467.yml build master-instructor --no-cache
+docker compose -f docker-compose.csc467.yml up master-instructor -d
+~~~
+
+- Otherwise, build `master-student`:
+
+~~~
+docker compose -f docker-compose.csc467.yml build master-student --no-cache
+docker compose -f docker-compose.csc467.yml up master-student -d
+~~~
+
+- Launch the worker nodes:
+
+~~~
+docker compose -f docker-compose.csc467.yml up worker -d --scale worker=4
+~~~
+
 
 ### Launching the cluster
 
