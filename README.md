@@ -34,13 +34,15 @@ docker compose -f docker-compose.bases.yml build csc467base --no-cache
 - If you are an instructor with lecture nodes and grading, build `head-instructor`:
 
 ~~~
-docker compose build --no-cache master-instructor
+docker compose -f docker-compose.csc331.yml build 331-instructor --no-cache
+docker compose -f docker-compose.csc331.yml up 331-instructor -d
 ~~~
 
 - Otherwise, build `head-student`:
 
 ~~~
-docker compose build --no-cache head-student
+docker compose -f docker-compose.csc331.yml build 331-student --no-cache
+docker compose -f docker-compose.csc331.yml up 331-student -d
 ~~~
 
 ### CSC467: Big Data Engineering

@@ -11,7 +11,7 @@ x-common-service: &common
     - seccomp=unconfined
 
 services:
-  head-instructor:
+  331-instructor:
     build:
       context: ./docker/csc331/head-instructor
       tags:
@@ -25,14 +25,14 @@ services:
     volumes:
       - ../grading-scripts:/grading-scripts
       - ../d2l:/d2l
-    hostname: head
-    container_name: head
+    hostname: csc331head
+    container_name: csc331head
     deploy:
       resources:
         limits:
           cpus: 2.0
 
-  head-student:
+  331-student:
     build:
       context: ./docker/csc331/head-student
       tags:
@@ -43,8 +43,8 @@ services:
       - "18088:8088"
       - "18000:8000"
       - "2222:22"
-    hostname: head
-    container_name: head
+    hostname: csc331head
+    container_name: csc331head
     deploy:
       resources:
         limits:

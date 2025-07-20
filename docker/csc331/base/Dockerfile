@@ -1,10 +1,4 @@
-FROM --platform=linux/amd64 rockylinux:9.3-minimal AS stage-amd64
-
-FROM --platform=linux/arm64/v8 rockylinux:9.3-minimal AS stage-arm64
-
-ARG TARGETARCH
-
-FROM stage-${TARGETARCH} AS final
+FROM --platform=linux/amd64 ubuntu:24.04
 
 USER root
 
