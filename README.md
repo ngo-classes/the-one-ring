@@ -47,36 +47,49 @@ docker compose -f docker-compose.csc331.yml up 331-student -d
 
 ### CSC467: Big Data Engineering
 
-- If you are an instructor with lecture nodes and grading, build `master-instructor`:
+- If you are an instructor with lecture nodes and grading, build `467-instructor`:
 
 ~~~
-docker compose -f docker-compose.csc467.yml build master-instructor --no-cache
-docker compose -f docker-compose.csc467.yml up master-instructor -d
+docker compose -f docker-compose.csc467.yml build 467-instructor --no-cache
+docker compose -f docker-compose.csc467.yml up 467-instructor -d
 ~~~
 
-- Otherwise, build `master-student`:
+- Otherwise, build `467-student`:
 
 ~~~
-docker compose -f docker-compose.csc467.yml build master-student --no-cache
-docker compose -f docker-compose.csc467.yml up master-student -d
+docker compose -f docker-compose.csc467.yml build 467-student --no-cache
+docker compose -f docker-compose.csc467.yml up 467-student -d
 ~~~
 
 - Launch the worker nodes:
 
 ~~~
-docker compose -f docker-compose.csc467.yml up worker -d --scale worker=4
+docker compose -f docker-compose.csc467.yml up 467-worker -d --scale 467-worker=4
 ~~~
 
 
-### Launching the cluster
+### CSC46: Distributed and Parallel Computing
 
 - Prior to launching, check `docker-compose.yml` to adjust the `resources` sections of the services being launched. 
     - It is possible to launch more than two compute nodes (or launch with just one node) by creating additional copy of the `compute-01` service section. You can create the new `compute-xx` service sections and make sure that the `hostname` and `container_name` sections for the new services are changed accordingly. 
-- You should launch in the following order:
+- If you are an instructor with lecture nodes and grading, build and launch `466-instructor`:
+
 ~~~
-docker compose up -d head-instructor # or head-student
-docker compose up -d compute01
-docker compose up -d compute02
+docker compose -f docker-compose.csc466.yml build 466-instructor --no-cache
+docker compose -f docker-compose.csc466.yml up 466-instructor -d
+~~~
+
+- Otherwise, build and launch `466-student`:
+
+~~~
+docker compose -f docker-compose.csc466.yml build 466-student --no-cache
+docker compose -f docker-compose.csc466.yml up 466-student -d
+~~~
+
+- Launch the compute nodes
+~~~
+docker compose -f docker-compose.csc466.yml up compute01 -d
+docker compose -f docker-compose.csc466.yml up compute02 -d
 ~~~
 
 ### Test

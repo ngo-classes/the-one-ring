@@ -3,6 +3,7 @@ x-common-service: &common
   ports:
     - "18080:8080" # spark-master webui
     - "18088:8088" # code-server
+    - "14040:4040" # application ui
   environment:
     - "SPARK_LOCAL_IP=spark-master"
   volumes:
@@ -10,7 +11,7 @@ x-common-service: &common
     - ./notebooks:/notebooks
     
 services:
-  master-instructor:
+  467-instructor:
     <<: *common
     build:
       context: ./docker/csc467/master-instructor
@@ -19,6 +20,7 @@ services:
     image: csc467:master-instructor
     ports:
       - "18888:8888" # jupyter server
+      - "18088:8088" # code-server
     volumes:
       - ../courses:/lectures # courses is a github repo containing lecture materials
       - ../grading-scripts:/grading-scripts
@@ -27,7 +29,7 @@ services:
     hostname: spark-master
     container_name: spark-master
 
-  master-student:
+  467-student:
     <<: *common
     build:
       context: ./docker/csc467/master-student
@@ -41,7 +43,7 @@ services:
     container_name: spark-master
 
   # This service will depend on either master-instructor or master-student    
-  worker:
+  467-worker:
     build:
       context: ./docker/csc467/worker
       tags:

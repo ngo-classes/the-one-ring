@@ -7,7 +7,7 @@ x-common-service: &common
     - "22"
 
 services:
-  head-instructor:
+  466-instructor:
     build:
       context: ./docker/csc466/head-instructor
       tags:
@@ -28,7 +28,7 @@ services:
         limits:
           cpus: 4.0
 
-  head-student:
+  466-student:
     build:
       context: ./docker/csc466/head-student
       tags:

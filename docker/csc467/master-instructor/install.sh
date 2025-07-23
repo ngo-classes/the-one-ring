@@ -14,6 +14,7 @@ apt update
 apt install -y unzip
 apt clean
 
-pip3 install jupyter-book mkdocs-material markdown-include mkdocs-table-reader-plugin mkdocs-jupyter mkdocs-glightbox
+pip3 install jupyter-book mkdocs-material markdown-include mkdocs-table-reader-plugin 
+pip3 install mkdocs-glightbox mkdocs-jupyter mkdocs-mermaid2-plugin
 
 cp /build/entrypoint.sh /usr/local/bin/entrypoint.sh
