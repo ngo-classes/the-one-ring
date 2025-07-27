@@ -14,10 +14,8 @@ services:
   331-instructor:
     build:
       context: ./docker/csc331/head-instructor
-      tags:
-        - "csc331:head-instructor"
     <<: *common
-    image: csc331:head-instructor
+    image: linhbngo/csc331:head-instructor
     ports:
       - "18088:8088"
       - "18000:8000"
@@ -35,9 +33,7 @@ services:
   331-student:
     build:
       context: ./docker/csc331/head-student
-      tags:
-        - "csc331:head-student"
-    image: csc331:head-student
+    image: linhbngo/csc331:head-student
     <<: *common
     ports:
       - "18088:8088"

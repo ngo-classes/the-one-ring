@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 csc331:base
+FROM --platform=linux/amd64 linhbngo/csc331:base
 
 USER student
 

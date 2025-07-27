@@ -2,24 +2,16 @@ services:
   csc331base:
     build:
       context: ./docker/csc331/base
-      tags:
-        - "csc331:base"
-    image: csc331:base
+    image: linhbngo/csc331:base
   csc466base:
     build:
       context: ./docker/csc466/base
-      tags:
-        - "csc466:base"
-    image: csc466:base
+    image: linhbngo/csc466:base
   csc467base:
     build:
       context: ./docker/csc467/base
-      tags:
-        - "csc467:base"
-    image: csc467:base
+    image: linhbngo/csc467:base
   ollama_base:
     build:
       context: ./docker/ollama_app/base
-      tags:
-        - "ollama_app:base"
     image: ollama_app:base
