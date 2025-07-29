@@ -3,10 +3,6 @@
 - This is the aggregarion of all other research and education containerized environments. Using multiple Docker compose files, this framework aims to 
 provide users with a dynamic setup that can be quickly extended based on their own teach/learning/researching progress. 
 
-- If you are running on Rancher Desktop, replace `docker` with `nerdctl`. 
-
-Potential lissue with nerdctl reading from localhost, need to be explicit. 
-
 ### Warning
 
 - If you clone into a Windows environment, makes sure that your git is set to keep `LF`:
