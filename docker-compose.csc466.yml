@@ -10,10 +10,8 @@ services:
   466-instructor:
     build:
       context: ./docker/csc466/head-instructor
-      tags:
-        - "csc466:head-instructor"
     <<: *common
-    image: csc466:head-instructor
+    image: linhbngo/csc466:head-instructor
     ports:
       - "18088:8088"
       - "18000:8000"
@@ -31,9 +29,7 @@ services:
   466-student:
     build:
       context: ./docker/csc466/head-student
-      tags:
-        - "csc466:head-student"
-    image: csc466:head-student
+    image: linhbngo/csc466:head-student
     <<: *common
     ports:
       - "18088:8088"
@@ -47,7 +43,7 @@ services:
           cpus: 4.0
 
   compute01:
-    image: csc466:base
+    image: linhbngo/csc466:base
     <<: *common
     expose:
       - "22"
@@ -59,7 +55,7 @@ services:
           cpus: 2.0
 
   compute02:
-     image: csc466:base
+     image: linhbngo/csc466:base
     <<: *common
     hostname: compute02
     container_name: compute02

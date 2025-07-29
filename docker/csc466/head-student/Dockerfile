@@ -1,6 +1,6 @@
-FROM --platform=linux/amd64 csc466:base AS stage-amd64
+FROM --platform=linux/amd64 linhbngo/csc466:base AS stage-amd64
 
-FROM --platform=linux/arm64 csc466:base AS stage-arm64
+FROM --platform=linux/arm64 linhbngo/csc466:base AS stage-arm64
 
 ARG TARGETARCH
 

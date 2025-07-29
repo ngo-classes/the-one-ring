@@ -15,9 +15,7 @@ services:
     <<: *common
     build:
       context: ./docker/csc467/master-instructor
-      tags:
-        - "csc467:master-instructor"
-    image: csc467:master-instructor
+    image: linhbngo/csc467:master-instructor
     ports:
       - "18888:8888" # jupyter server
       - "18088:8088" # code-server
@@ -33,9 +31,7 @@ services:
     <<: *common
     build:
       context: ./docker/csc467/master-student
-      tags:
-        - "csc467:master-student"
-    image: csc467:master-student
+    image: linhbngo/csc467:master-student
     volumes:
       - ./data:/data
       - ./notebooks:/notebooks
@@ -46,10 +42,8 @@ services:
   467-worker:
     build:
       context: ./docker/csc467/worker
-      tags:
-        - "csc467:worker"
     init: true
-    image: csc467:worker
+    image: linhbngo/csc467:worker
     ports:
       - "8081"
     environment:
