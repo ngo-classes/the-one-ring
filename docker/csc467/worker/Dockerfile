@@ -1,4 +1,4 @@
-FROM csc467:base
+FROM linhbngo/csc467:base
 
 ENV SPARK_WORKER_WEBUI_PORT=8081
 ENV SPARK_WORKER_LOG=/spark/logs

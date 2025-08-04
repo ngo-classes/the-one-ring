@@ -19,10 +19,13 @@ services:
     ports:
       - "18888:8888" # jupyter server
       - "18088:8088" # code-server
+      - "18080:8080" # spark-master webui
+      - "14040:4040" # application ui
     volumes:
-      - ../courses:/lectures # courses is a github repo containing lecture materials
-      - ../grading-scripts:/grading-scripts
-      - ../d2l:/d2l
+      #- ../courses:/lectures # courses is a github repo containing lecture materials
+      #- ../grading-scripts:/grading-scripts
+      #- ../d2l:/d2l
+      - /mnt/e/workspace/d2l:/d2l
     
     hostname: spark-master
     container_name: spark-master
