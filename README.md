@@ -12,6 +12,42 @@ git config --global core.autocrlf false
 git clone https://github.com/ngo-classes/the-one-ring
 ~~~
 
+### Rancher Desktop versus Docker Desktop
+
+- Symlink issue:
+
+Ensure ~/.rd/bin/docker-compose exists: Verify that the target file docker-compose is present in ~/.rd/bin/. If it's not, there might be an issue with your Rancher Desktop installation that needs to be addressed first.
+Create the cli-plugins directory (if it doesn't exist):
+Code
+
+    mkdir -p ~/.docker/cli-plugins
+Create the symbolic link.
+Code
+
+    ln -s ~/.rd/bin/docker-compose ~/.docker/cli-plugins/docker-compose
+After creating the symlink, restart your terminal or shell session to ensure the changes are picked up by your system's PATH and shell environment. You should then be able to use docker compose as expected.
+
+
+To fix this, you need to recreate the symbolic link:
+Ensure Rancher Desktop is running:
+.
+The target file ~/.rd/bin/docker-buildx is part of Rancher Desktop's installation, so it should be accessible.
+Remove any existing broken symlink:
+.
+If a broken symlink exists at ~/.docker/cli-plugins/docker-buildx, it's best to remove it first.
+Code
+
+    rm -f ~/.docker/cli-plugins/docker-buildx
+Create the symbolic link: Use the ln -s command to create the correct symlink.
+Code
+
+    ln -s ~/.rd/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
+Verify the fix: After creating the symlink, you can try running a docker buildx command to confirm it's now recognized. For example:
+Code
+
+    docker buildx version
+If these steps do not resolve the issue, consider restarting Rancher Desktop, as it may re-establish necessary links upon startup. If the problem persists, a reinstallation of Rancher Desktop might be necessary to ensure all components are correctly installed and linked.
+
 ### Building the base images
 
 - You should build the images in the following order:
