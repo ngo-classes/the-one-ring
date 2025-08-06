@@ -14,34 +14,50 @@ source /build/base.config
 #------------------------
 
 apt update
-apt install -y build-essential
-apt install -y software-properties-common
 
+# Development tools
 DEBIAN_FRONTEND=noninteractive apt install -y \
-    openssh-server \
-    sudo \
-    openssl \
-    bash-completion \
+    build-essential \
+    software-properties-common \
+    libssl-dev \
+    libffi-dev \
+    pkg-config \
+    libpython3-dev \
+    zlib1g-dev
+
+# Python runtime and pip
+DEBIAN_FRONTEND=noninteractive apt install -y \
+    python3 \
+    python3-pip \
+    python3-venv
+
+python3 -m venv /opt/venv/python3
+
+
+# System tools and editors
+DEBIAN_FRONTEND=noninteractive apt install -y \
     curl \
-    tar \
-    perl \
-    zlib1g-dev \
-    git \
     wget \
     vim \
     nano \
     tmux \
-    wamerican \
-    libc6-dev \
-    libstdc++6 \
-    gdb \
-    valgrind \
-    python3 \
-    python3-pip \
-    libpython3-dev \
-    qemu-system-misc \
-    gcc-riscv64-unknown-elf 
+    bash-completion \
+    tar \
+    perl \
+    iputils-ping \
+    unzip
 
+# Authentication and directory services
+DEBIAN_FRONTEND=noninteractive apt install -y \
+    openssh-server \
+    sudo \
+    openssl \
+    ldap-utils \
+    sssd \
+    sssd-tools
+
+log_info "Generating ssh host keys.."
+ssh-keygen -A
 sed -i 's/^#\?ChallengeResponseAuthentication .*/ChallengeResponseAuthentication yes/' /etc/ssh/sshd_config
 
 #------------------------
@@ -59,24 +75,12 @@ do
     idnumber=$((idnumber + 1))
 done
 
-#------------------------
-# Setup gdb-peda
-#------------------------
-git clone https://github.com/longld/peda.git /opt/peda
-for uid in $USERS
-do
-    echo "source /opt/peda/peda.py" > /home/${uid}/.gdbinit
-    chown ${uid}:${uid} /home/${uid}/.gdbinit
-done
 
 #------------------------
 # Final cleanup and setup
 #------------------------
 apt clean
 rm -rf /var/lib/apt/lists/*
-
-cp /build/entrypoint.sh /usr/local/bin/entrypoint.sh
-chmod 755 /usr/local/bin/entrypoint.sh
 
 cp -R /build/home/ /opt/
 mkdir -p /run/sshd

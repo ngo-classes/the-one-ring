@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "---> Starting sshd on the node ..."
-/usr/sbin/sshd -e
+echo "---> Starting sshd on the login node..."
+sudo /usr/sbin/sshd -e
 
 if [ -z "$( ls -A '/home/student/.ssh' )" ]; then
   echo "Initializing /home/student on first run"
@@ -13,4 +13,8 @@ if [ -z "$( ls -A '/home/student/.ssh' )" ]; then
   chmod 600 /home/student/.ssh/config
 fi
 
-sleep infinity
+# running container ...
+
+cd /home/student/
+code-server --bind-addr 0.0.0.0:8088
+
