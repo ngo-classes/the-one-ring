@@ -23,7 +23,8 @@ DEBIAN_FRONTEND=noninteractive apt install -y \
     libffi-dev \
     pkg-config \
     libpython3-dev \
-    zlib1g-dev
+    zlib1g-dev \
+    git
 
 # Python runtime and pip
 DEBIAN_FRONTEND=noninteractive apt install -y \
