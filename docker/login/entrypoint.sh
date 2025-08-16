@@ -16,5 +16,6 @@ fi
 # running container ...
 
 cd /home/student/
+source /opt/venv/python3/bin/activate
 code-server --bind-addr 0.0.0.0:8088
 
