@@ -47,38 +47,11 @@ Code
 
     docker buildx version
 If these steps do not resolve the issue, consider restarting Rancher Desktop, as it may re-establish necessary links upon startup. If the problem persists, a reinstallation of Rancher Desktop might be necessary to ensure all components are correctly installed and linked.
-
-### Building the base images
-
-- You should build the images in the following order:
-- Build the specific bases depending on your courses need:
-
-- CSC331
-
-~~~
-docker compose -f docker-compose.bases.yml build csc331base --no-cache
-~~~
-
-- CSC467
-
-~~~
-docker compose -f docker-compose.bases.yml build csc467base --no-cache
-~~~
-
 ### CSC331: Operating System
 
-- If you are an instructor with lecture nodes and grading, build `head-instructor`:
-
 ~~~
-docker compose -f docker-compose.csc331.yml build 331-instructor --no-cache
-docker compose -f docker-compose.csc331.yml up 331-instructor -d
-~~~
-
-- Otherwise, build `head-student`:
-
-~~~
-docker compose -f docker-compose.csc331.yml build 331-student --no-cache
-docker compose -f docker-compose.csc331.yml up 331-student -d
+docker compose -f docker-compose.yml up login
+docker compose -f docker-compose.yml up 331-head
 ~~~
 
 ### CSC467: Big Data Engineering
