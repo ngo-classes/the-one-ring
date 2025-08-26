@@ -9,6 +9,7 @@ provide users with a dynamic setup that can be quickly extended based on their o
 ~~~
 git config --global core.autocrlf false
 git clone https://github.com/ngo-classes/the-one-ring
+cd the-one-ring
 ~~~
 
 ### CSC331: Operating System
