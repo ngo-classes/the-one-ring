@@ -1,7 +1,15 @@
 # The One Ring framework
 
 - This is the aggregarion of all other research and education containerized environments. Using multiple Docker compose files, this framework aims to 
-provide users with a dynamic setup that can be quickly extended based on their own teach/learning/researching progress. 
+provide users with a dynamic setup that can be quickly extended based on their own teach/learning/researching progress.
+
+
+- If you clone into a Windows environment, makes sure that your git is set to keep `LF`:
+
+~~~
+git config --global core.autocrlf false
+git clone https://github.com/ngo-classes/the-one-ring
+~~~
 
 ### CSC331: Operating System
 
