@@ -5,17 +5,17 @@ services:
     image: linhbngo/onering:base
     command: /bin/bash -c exit
 
-  331-head:
+  csc331:
     build:
       context: ./docker/csc331
     image: linhbngo/onering:csc331
-    depends_on:
-      - login
+    container_name: csc331
     volumes:
       - .:/workspace
       - home:/home
     ports:
-      - "22"
+      - "18088:8088"
+      - "22331:22"
     mem_limit: 2048m
     cpus: 2.0
 
@@ -24,12 +24,7 @@ services:
       context: ./docker/csc466
     image: linhbngo/onering:csc466
     container_name: cpn01
-    depends_on:
-      - login
     volumes:
-      - ../courses:/lectures
-      - ../grading-scripts:/grading-scripts
-      - ../d2l:/d2l
       - .:/workspace
       - home:/home
     ports:
@@ -42,12 +37,7 @@ services:
       context: ./docker/csc466
     image: linhbngo/onering:csc466
     container_name: cpn02
-    depends_on:
-      - login
     volumes:
-      - ../courses:/lectures
-      - ../grading-scripts:/grading-scripts
-      - ../d2l:/d2l
       - .:/workspace
       - home:/home
     ports:
