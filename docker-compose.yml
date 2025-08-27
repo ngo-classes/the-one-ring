@@ -4,25 +4,6 @@ services:
       context: ./docker/base
     image: linhbngo/onering:base
     command: /bin/bash -c exit
-  login:
-    build:
-      context: ./docker/login
-    image: linhbngo/onering:login
-    depends_on:
-      base:
-        condition: service_completed_successfully 
-    volumes:
-      - ../courses:/lectures
-      - ../grading-scripts:/grading-scripts
-      - ../d2l:/d2l
-      - .:/workspace
-      - home:/home
-    ports:
-      - "18000:8000"
-      - "18088:8088"
-      - "2222:22"
-    mem_limit: 4096m
-    cpus: 2.0
 
   331-head:
     build:
@@ -31,9 +12,6 @@ services:
     depends_on:
       - login
     volumes:
-      - ../courses:/lectures
-      - ../grading-scripts:/grading-scripts
-      - ../d2l:/d2l
       - .:/workspace
       - home:/home
     ports:

@@ -11,5 +11,8 @@ DEBIAN_FRONTEND=noninteractive apt install -y \
 apt clean
 rm -rf /var/lib/apt/lists/*
 
+# setup code server
+sh /home/student/build/code-server.sh #--prefix=/usr/local/
+
 sudo cp /home/student/build/entrypoint.sh /usr/local/bin/entrypoint.sh
 sudo chmod 755 /usr/local/bin/entrypoint.sh  
