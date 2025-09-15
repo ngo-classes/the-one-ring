@@ -16,6 +16,10 @@ services:
     ports:
       - "18088:8088"
       - "22331:22"
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp=unconfined
     mem_limit: 2048m
     cpus: 2.0
 
