@@ -1,4 +1,10 @@
-FROM --platform=linux/amd64 linhbngo/onering:base
+FROM --platform=linux/amd64 linhbngo/onering-amd:base AS stage-amd64
+
+FROM --platform=linux/arm64/v8 linhbngo/onering-arm:base AS stage-arm64
+
+ARG TARGETARCH
+
+FROM stage-${TARGETARCH} AS final
 
 USER student
 
