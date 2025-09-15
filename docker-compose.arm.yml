@@ -2,13 +2,13 @@ services:
   base:
     build:
       context: ./docker/base
-    image: linhbngo/onering:base
+    image: linhbngo/onering-arm:base
     command: /bin/bash -c exit
 
   csc331:
     build:
       context: ./docker/csc331
-    image: linhbngo/onering:csc331
+    image: linhbngo/onering-arm:csc331
     container_name: csc331
     volumes:
       - .:/workspace
@@ -26,7 +26,7 @@ services:
   466-cpn01:
     build:
       context: ./docker/csc466
-    image: linhbngo/onering:csc466
+    image: linhbngo/onering-arm:csc466
     container_name: cpn01
     volumes:
       - .:/workspace
@@ -39,7 +39,7 @@ services:
   466-cpn02:
     build:
       context: ./docker/csc466
-    image: linhbngo/onering:csc466
+    image: linhbngo/onering-arm:csc466
     container_name: cpn02
     volumes:
       - .:/workspace
@@ -48,20 +48,6 @@ services:
       - "22"
     mem_limit: 2048m
     cpus: 2.0
-
-  ollama:
-    container_name: ollama
-    image: ollama/ollama
-    volumes: # change this to your own external model storage place/platform
-    # - //e/data/ollama_models:/root/.ollama # This is for Windows
-      - /Users/lngo/workspace/ollama_models:/root/.ollama # This is for Mac
-    ports:
-      - "11434:11434"
-    mem_limit: 8192m
-    environment:
-      OLLAMA_RUN_TIMEOUT: 600
-      OLLAMA_REQUEST_TIMEOUT: 600
-      OLLAMA_LOAD_TIMEOUT: 600
 
 volumes:
   home:
