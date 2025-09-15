@@ -24,7 +24,8 @@ DEBIAN_FRONTEND=noninteractive apt install -y \
     pkg-config \
     libpython3-dev \
     zlib1g-dev \
-    git
+    git \
+    bc
 
 # Python runtime and pip
 DEBIAN_FRONTEND=noninteractive apt install -y \
